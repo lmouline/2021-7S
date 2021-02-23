@@ -45,7 +45,7 @@ class StripController(val assembler: StripModelAssembler) {
     }
 
     @GetMapping("/strips")
-    fun latestImages(): CollectionModel<EntityModel<Strip>> {
+    fun latestStrips(): CollectionModel<EntityModel<Strip>> {
         val strips: MutableList<Strip> = sources.flatMap { it.pullImages(
             NB_STRIPS_PER_SOURCE
         ) }

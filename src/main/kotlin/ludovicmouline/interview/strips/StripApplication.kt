@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.context.request.WebRequest
 
 @SpringBootApplication
-class ImagesApplication
+class StripApplication
 
 
 /**
@@ -33,5 +33,5 @@ class ErrorMessage: DefaultErrorAttributes() {
 }
 
 fun main(args: Array<String>) {
-	runApplication<ImagesApplication>(*args)
+	runApplication<StripApplication>(*args)
 }
