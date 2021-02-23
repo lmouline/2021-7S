@@ -9,6 +9,7 @@ plugins {
 
 group = "ludovicmouline.interview.7s"
 version = "0.0.1-SNAPSHOT"
+description = "Implementation of the coding challenge for SevenSenders"
 java.sourceCompatibility = JavaVersion.VERSION_15
 
 repositories {
@@ -16,7 +17,6 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-batch")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -24,7 +24,6 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-hateoas")
 	implementation("com.rometools:rome:1.15.0")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("org.hsqldb:hsqldb")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.batch:spring-batch-test")
 }

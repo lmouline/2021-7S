@@ -1,4 +1,4 @@
-package ludovicmouline.interview.s.images
+package ludovicmouline.interview.strips
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
