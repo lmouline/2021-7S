@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest
 class ImagesApplicationTests {
 
 	@Test
-	fun contextLoads() {
-	}
+	fun `Server can be started`() {}
 
 }
