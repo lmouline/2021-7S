@@ -7,5 +7,5 @@ import ludovicmouline.interview.s.images.Image
  * images from other REST API.
  */
 interface ImageSource {
-    fun pullImages(nb: Int) : Array<Image>
+    fun pullImages(nb: Int) : List<Image>
 }
