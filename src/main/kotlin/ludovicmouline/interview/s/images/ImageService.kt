@@ -1,6 +1,7 @@
 package ludovicmouline.interview.s.images
 
 import ludovicmouline.interview.s.images.sources.ImageSource
+import ludovicmouline.interview.s.images.sources.PDLSource
 import ludovicmouline.interview.s.images.sources.XKCDSource
 import org.springframework.hateoas.CollectionModel
 import org.springframework.hateoas.EntityModel
@@ -19,7 +20,7 @@ import kotlin.collections.ArrayList
 data class Image(
     val pictureUrl: String,
     val title: String,
-    val description: String,
+    val description: String?,
     val webUrl: String,
     val publishedDate: LocalDate
 )
@@ -29,16 +30,16 @@ class ImageController(
     val assembler: ImageModelAssembler
 ) {
 
-    val sources = arrayListOf<ImageSource>(XKCDSource())
+    val sources = arrayListOf<ImageSource>(XKCDSource(), PDLSource())
 
     @GetMapping("/images")
     fun latestImages(): CollectionModel<EntityModel<Image>> {
 
         val images = ArrayList<Image>(20)
         sources.forEach { images.addAll(it.pullImages(10)) }
-        images.sortedBy { it.publishedDate }
 
-        return this.assembler.toCollectionModel(images)
+
+        return this.assembler.toCollectionModel( images.sortedBy { it.publishedDate }.toMutableList())
     }
 
     @GetMapping("images/{id}")
