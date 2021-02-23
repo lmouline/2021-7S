@@ -33,4 +33,26 @@ class StripControllerTest(@Autowired val appCtx: WebApplicationContext) {
             .andExpect(content().contentType("application/hal+json"))
             .andExpect(jsonPath("\$._embedded.stripList.length()").value(20))
     }
+
+    @Test
+    fun `Assert all elements are present`() {
+        this.mockMvc.perform(get("/strips"))
+            .andExpect(status().isOk)
+            .andExpect(content().contentType("application/hal+json"))
+            .andExpect(
+                jsonPath("\$._embedded.stripList[*].title").exists()
+            )
+            .andExpect(
+                jsonPath("\$._embedded.stripList[*].description").exists()
+            )
+            .andExpect(
+                jsonPath("\$._embedded.stripList[*].webUrl").exists()
+            )
+            .andExpect(
+                jsonPath("\$._embedded.stripList[*].publishedDate").exists()
+            )
+            .andExpect(
+                jsonPath("\$._embedded.stripList[*].pictureUrl").exists()
+            )
+    }
 }
