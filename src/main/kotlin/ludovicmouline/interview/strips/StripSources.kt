@@ -69,7 +69,7 @@ class XKCDSource: StripSource {
             """$API_ROUTE$JSON_FILE""",
             XKCDImage::class.java
         )?.let { current: XKCDImage ->
-            for (i in 0..nb) {
+            for (i in 0 until nb) {
                 restTemplate.getForObject(
                     """$API_ROUTE/${current.num - i}$JSON_FILE""",
                     XKCDImage::class.java
