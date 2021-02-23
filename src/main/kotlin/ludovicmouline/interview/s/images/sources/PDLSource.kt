@@ -18,6 +18,8 @@ class PDLSource: ImageSource {
 
     companion object {
         const val API_URL_CURRENT = "http://feeds.feedburner.com/PoorlyDrawnLines"
+        const val IMG_URL_PATTERN = "http[s]?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\\.png"
+        val regex = Regex(IMG_URL_PATTERN)
     }
 
     override fun pullImages(nb: Int): List<Image> {
@@ -27,7 +29,7 @@ class PDLSource: ImageSource {
 
         return feed.entries.map {
             Image(
-                pictureUrl = it.link,
+                pictureUrl = regex.find(it.contents.first().value)!!.value,
                 title = it.title,
                 webUrl = it.uri,
                 publishedDate = Instant.ofEpochMilli(it.publishedDate.time)

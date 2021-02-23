@@ -35,7 +35,7 @@ class XKCDSource: ImageSource {
                             pictureUrl = xkcdImg.img,
                             title = xkcdImg.title,
                             description = xkcdImg.alt,
-                            webUrl = xkcdImg.img,
+                            webUrl = """https://xkcd.com/${xkcdImg.num}""",
                             publishedDate = LocalDate.of(
                                 xkcdImg.year.toInt(),
                                 xkcdImg.month.toInt(),
