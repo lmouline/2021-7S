@@ -11,7 +11,10 @@ import org.springframework.web.context.request.WebRequest
 class ImagesApplication
 
 
-
+/**
+ * Customisation of the element send to the error message (JSON)
+ * We remove the trace field.
+ */
 @Component
 class ErrorMessage: DefaultErrorAttributes() {
 	companion object {
