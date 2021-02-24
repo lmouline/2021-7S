@@ -30,7 +30,7 @@ class StripsLengthTest(@Autowired val appCtx: WebApplicationContext) {
      * It may fail if it is not accessible from the testing environment, or
      * if the service is done.
      */
-    @Ignore
+    @Ignore(value = "Fails during Docker image build and from WSL (port issue?)")
     fun `Assert images return 20 images`(){
         this.mockMvc.perform(MockMvcRequestBuilders.get("/strips"))
             .andExpect(MockMvcResultMatchers.status().isOk)
