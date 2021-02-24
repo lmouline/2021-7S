@@ -26,6 +26,7 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.batch:spring-batch-test")
+	testImplementation("org.mockito:mockito-inline:2.13.0")
 }
 
 tasks.withType<KotlinCompile> {

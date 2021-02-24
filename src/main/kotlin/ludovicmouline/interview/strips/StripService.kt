@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn
 
 /**
  * Representation of a drawing strip for the final JSON
@@ -49,7 +51,7 @@ class StripController(val assembler: StripModelAssembler) {
         val strips: MutableList<Strip> = sources.flatMap { it.pullImages(
             NB_STRIPS_PER_SOURCE
         ) }
-            .sortedBy(Strip::publishedDate)
+            .sortedByDescending(Strip::publishedDate)
             .toMutableList()
 
         return this.assembler.toCollectionModel(strips)
@@ -65,6 +67,9 @@ class StripModelAssembler:
 
     override fun toCollectionModel(entities: MutableIterable<Strip>)
     : CollectionModel<EntityModel<Strip>> =
-        CollectionModel.of(entities.map { toModel(it) })
+        CollectionModel.of(
+            entities.map { toModel(it) },
+            linkTo(methodOn(StripController::class.java).latestStrips()).withSelfRel()
+        )
 
 }
