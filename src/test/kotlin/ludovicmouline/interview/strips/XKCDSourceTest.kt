@@ -26,7 +26,7 @@ class XKCDSourceTest {
     }
 
     @Test
-    fun `Assert null JSON`() {
+    fun `Assert current is null JSON`() {
         val mockRestTemplate = Mockito.mock(RestTemplate::class.java)
         val xkcd = XKCDSource();
         ReflectionTestUtils.setField(xkcd, "restTemplate", mockRestTemplate);
