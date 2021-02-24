@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "ludovicmouline.interview.7s"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 description = "Implementation of the coding challenge for SevenSenders"
 java.sourceCompatibility = JavaVersion.VERSION_15
 
