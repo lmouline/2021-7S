@@ -1,6 +1,9 @@
 package ludovicmouline.interview.strips
 
+import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Ignore
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.runner.RunWith
@@ -85,16 +88,6 @@ class StripControllerTest(@Autowired val appCtx: WebApplicationContext,
                         "PDL 2", "PDL 1")
                 )
             )
-    }
-
-
-    @Test
-    @Ignore
-    fun `Assert images return 20 images`(){
-        this.mockMvc.perform(get("/strips"))
-            .andExpect(status().isOk)
-            .andExpect(content().contentType("application/hal+json"))
-            .andExpect(jsonPath("\$._embedded.stripList.length()").value(20))
     }
 
     @Test
