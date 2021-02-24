@@ -12,35 +12,35 @@ This is my implementation of the [coding challenge for SevenSenders](https://www
 
 ### With Docker
 
-We de fine a [Docker Compose](https://docs.docker.com/compose/) that builds and run the web application.
+We define a [Docker Compose](https://docs.docker.com/compose/) that builds and runs the web application.
 Before running it, please make sure that your 8080 port is available.
 If not, you need to modify the port mapping in `docker-compose.yml`.
 
-After installing Docker Compose on your machine, you can run the following command from the root folder of the project: `docker-compose build`.
+After installing Docker Compose on your machine, you can execute the following command from the project's root folder: `docker-compose build`.
 **Warning:** The command might take a while to be executed.
 
 
 ### From scratch
 
 For this project, we use the [Gradle](https://gradle.org/) build tool.
-But, we use it with a wrapper, so you do not have to install anything :)
+But, we use it with a wrapper, so you do not have to install anything!
 The only requirement is that you need Java 15 installed on your machine.
 
-If you are on a Unix system, you need to execute the following command from the root folder of the project: `./gradlew build`.
-From a Window, you can use the `gradlew.bat` script in the same yay: `.\gradlew.bat build`.
+If you are on a Unix system, you need to execute the following command from the project's root folder: `./gradlew build`.
+From Windows, you can use the `gradlew.bat` script in the same way: `.\gradlew.bat build`.
 For more information regarding this script, please refer to the [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html).
 
 
 ## Run
 
-### From docker
+### From Docker
 
 As for the build, you can use the Docker Compose file.
-You can use one of the following command: `docker-compose up` (no need to build it first).
+You can use the following command: `docker-compose up` (no need to build it first).
 
 ### Command line
 
-The building process generates an executable jar file, that can be found in `build/libs`.
+The building process generates an executable jar file that can be found in `build/libs`.
 You can directly execute it: `java -jar build/libs/strips-<VERSION>.jar`.
 
 # Challenge
