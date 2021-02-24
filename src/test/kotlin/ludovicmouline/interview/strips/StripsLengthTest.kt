@@ -1,6 +1,5 @@
 package ludovicmouline.interview.strips
 
-import org.junit.Ignore
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.runner.RunWith
@@ -17,8 +16,7 @@ import org.springframework.web.context.WebApplicationContext
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(classes = [StripApplication::class])
 @WebAppConfiguration
-class StripsLengthTest(@Autowired val appCtx: WebApplicationContext,
-                          @Autowired val controller: StripController) {
+class StripsLengthTest(@Autowired val appCtx: WebApplicationContext) {
     lateinit var mockMvc: MockMvc
 
     @BeforeEach
@@ -26,6 +24,11 @@ class StripsLengthTest(@Autowired val appCtx: WebApplicationContext,
         mockMvc = MockMvcBuilders.webAppContextSetup(appCtx).build()
     }
 
+    /**
+     * WARNING: This test directly requests the sources API.
+     * It may fail if it is not accessible from the testing environment, or
+     * if the service is done.
+     */
     @Test
     fun `Assert images return 20 images`(){
         this.mockMvc.perform(MockMvcRequestBuilders.get("/strips"))
