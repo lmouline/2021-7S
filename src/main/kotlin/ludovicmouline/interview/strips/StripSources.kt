@@ -59,8 +59,9 @@ class XKCDSource: StripSource {
     companion object {
         const val API_ROUTE = "https://xkcd.com"
         const val JSON_FILE = "/info.0.json"
-        val restTemplate: RestTemplate = RestTemplateBuilder().build()
     }
+
+    private val restTemplate: RestTemplate = RestTemplateBuilder().build()
 
     override fun pullImages(nb: Int): List<Strip> {
         val images = ArrayList<Strip>(nb)
@@ -69,7 +70,8 @@ class XKCDSource: StripSource {
             """$API_ROUTE$JSON_FILE""",
             XKCDImage::class.java
         )?.let { current: XKCDImage ->
-            for (i in 0 until nb) {
+            images.add(current.toStrip())
+            for (i in 1 until nb) {
                 restTemplate.getForObject(
                     """$API_ROUTE/${current.num - i}$JSON_FILE""",
                     XKCDImage::class.java
