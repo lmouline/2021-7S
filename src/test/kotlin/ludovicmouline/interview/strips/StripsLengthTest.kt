@@ -1,5 +1,6 @@
 package ludovicmouline.interview.strips
 
+import org.junit.Ignore
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.runner.RunWith
@@ -29,7 +30,7 @@ class StripsLengthTest(@Autowired val appCtx: WebApplicationContext) {
      * It may fail if it is not accessible from the testing environment, or
      * if the service is done.
      */
-    @Test
+    @Ignore
     fun `Assert images return 20 images`(){
         this.mockMvc.perform(MockMvcRequestBuilders.get("/strips"))
             .andExpect(MockMvcResultMatchers.status().isOk)
